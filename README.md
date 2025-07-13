@@ -21,7 +21,7 @@
 ## 🛠️ Setup Instructions
 1. **Clone the repository**
    ```sh
-   git clone https://github.com/venkat374/DocAssist.git
+   git clone https://github.com/Vishalbharadwaj27/DocAssist.git
    cd DocAssist
    ```
 2. **Install dependencies**
@@ -41,7 +41,7 @@
 ## 👥 Team Members
 - **Venkat** (GitHub: [venkat374](https://github.com/venkat374))
 - **Thushar Raj** (GitHub: [thushar-011](https://github.com/thushar-011))
-- **Vishal M** (GitHub: [Vishalbharabwaj27](https://github.com/Vishalbharabwaj27))
+- **Vishal M Bharadwaj** (GitHub: [Vishalbharadwaj27](https://github.com/Vishalbharadwaj27))
 - **Spoorti Nayak** (GitHub: [spoorti-nayak](https://github.com/spoorti-nayak))
 - **Kruthika Hegde** (GitHub: [kruthika-hegde](https://github.com/kruthika-hegde))
 
