@@ -1,9 +1,13 @@
-// gemma.ts
+// gemma.js
 
-import { getPatientById, patients } from "@/utils/mockData";
+import { getPatientById, patients } from "./mockData.js"; // Adjust path if necessary
 
-export const getGemmaResponse = async (prompt: string, patientId?: string) => {
+export const getGemmaResponse = async (prompt, patientId) => {
   // ... (Your API logic here) ...
+  // In a real browser environment without a build tool like Vite,
+  // import.meta.env.VITE_GEMMA_API_KEY would not work.
+  // You would typically define an API key directly or load it from a global variable.
+  // For this conversion, we keep it as is, assuming a similar module environment.
   const apiKey = import.meta.env.VITE_GEMMA_API_KEY;
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
@@ -41,9 +45,10 @@ export const getGemmaResponse = async (prompt: string, patientId?: string) => {
     } else {
       return `For specific patient questions, please go to the patient page.`;
     }
-  } else if (patientId && prompt.toLowerCase().includes(getPatientById(patientId).firstName.toLowerCase())) {
+  } else {
+    // Check if patientId is provided and the prompt includes the patient's first name
     const patient = getPatientById(patientId);
-    if (patient) {
+    if (patient && prompt.toLowerCase().includes(patient.firstName.toLowerCase())) {
       // Compute age from dateOfBirth
       const age = patient.dateOfBirth
         ? new Date().getFullYear() - new Date(patient.dateOfBirth).getFullYear()
@@ -65,9 +70,9 @@ Patient Information:
 ${patient.labResults.map(lr => `${lr.name}: ${lr.result} (Status: ${lr.status})`).join("\n")}
       `;
       finalPrompt = `Doctor's Question: ${prompt}\n\n${patientInfo}`;
+    } else if (patient && !prompt.toLowerCase().includes(patient.firstName.toLowerCase())) {
+      return `Please ask patient-specific questions in the patient page.`;
     }
-  } else if (patientId && !prompt.toLowerCase().includes(getPatientById(patientId).firstName.toLowerCase())) {
-    return `Please ask patient-specific questions in the patient page.`;
   }
 
   try {

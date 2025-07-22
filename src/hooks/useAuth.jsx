@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/integrations/supabase/client"; // Assuming this path is correct in JS
 
 // Create Auth Context
 const AuthContext = createContext(null);
@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       setLoading(true);
       const { data, error } = await supabase.auth.getUser();
-      
+
       if (error) {
         console.error("Error fetching user data:", error);
       } else {

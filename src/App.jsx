@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,29 +20,29 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route 
-              path="/" 
+            <Route
+              path="/"
               element={
                 <AuthGuard requireAuth={true}>
                   <Index />
                 </AuthGuard>
-              } 
+              }
             />
-            <Route 
-              path="/login" 
+            <Route
+              path="/login"
               element={
                 <AuthGuard requireAuth={false}>
                   <Login />
                 </AuthGuard>
-              } 
+              }
             />
-            <Route 
-              path="/signup" 
+            <Route
+              path="/signup"
               element={
                 <AuthGuard requireAuth={false}>
                   <Signup />
                 </AuthGuard>
-              } 
+              }
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
@@ -55,3 +54,4 @@ const App = () => (
 );
 
 export default App;
+

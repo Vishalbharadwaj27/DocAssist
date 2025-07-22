@@ -1,9 +1,8 @@
-
 import { useEffect, useState } from 'react';
 
 // Hook for fade-in animation on mount
 export const useFadeIn = (delay = 0, duration = 300) => {
-  const [style, setStyle] = useState<React.CSSProperties>({
+  const [style, setStyle] = useState({
     opacity: 0,
     transition: `opacity ${duration}ms ease-in-out ${delay}ms`
   });
@@ -24,7 +23,7 @@ export const useFadeIn = (delay = 0, duration = 300) => {
 
 // Hook for slide-in animation on mount
 export const useSlideIn = (delay = 0, duration = 300, direction = 'up') => {
-  const [style, setStyle] = useState<React.CSSProperties>({
+  const [style, setStyle] = useState({
     opacity: 0,
     transform: getInitialTransform(direction),
     transition: `opacity ${duration}ms ease-out ${delay}ms, transform ${duration}ms ease-out ${delay}ms`
@@ -46,7 +45,7 @@ export const useSlideIn = (delay = 0, duration = 300, direction = 'up') => {
 };
 
 // Helper for getting initial transform based on direction
-function getInitialTransform(direction: string): string {
+function getInitialTransform(direction) {
   switch (direction) {
     case 'up':
       return 'translate(0, 20px)';
@@ -62,8 +61,8 @@ function getInitialTransform(direction: string): string {
 }
 
 // Staggered animation for lists
-export const useStaggered = (totalItems: number, baseDelay = 50, duration = 300) => {
-  return (index: number) => {
+export const useStaggered = (totalItems, baseDelay = 50, duration = 300) => {
+  return (index) => {
     return {
       opacity: 0,
       transform: 'translateY(10px)',
@@ -81,7 +80,7 @@ export const getTypingAnimationClass = () => {
 // Hook for detecting when element is in viewport
 export const useInView = (threshold = 0.1) => {
   const [isInView, setIsInView] = useState(false);
-  const [ref, setRef] = useState<HTMLElement | null>(null);
+  const [ref, setRef] = useState(null); // Type annotation removed
 
   useEffect(() => {
     if (!ref) return;
@@ -100,5 +99,5 @@ export const useInView = (threshold = 0.1) => {
     };
   }, [ref, threshold]);
 
-  return [setRef, isInView] as const;
+  return [setRef, isInView]; // 'as const' removed as it's a TypeScript-specific assertion
 };

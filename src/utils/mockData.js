@@ -1,71 +1,8 @@
-
 // Mock data types
-export interface Patient {
-  id: string;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  gender: string;
-  mrn: string; // Medical Record Number
-  photo?: string;
-  lastVisit: string;
-  status: 'stable' | 'critical' | 'warning';
-  primaryDoctor: string;
-  contactInfo: {
-    phone: string;
-    email: string;
-    address: string;
-  };
-  vitalSigns?: VitalSigns;
-  conditions: Condition[];
-  medications: Medication[];
-  allergies: string[];
-  labResults: LabResult[];
-  visits: Visit[];
-}
-
-export interface VitalSigns {
-  temperature: number;
-  heartRate: number;
-  bloodPressure: string;
-  respiratoryRate: number;
-  oxygenSaturation: number;
-  recordedAt: string;
-}
-
-export interface Condition {
-  name: string;
-  diagnosedDate: string;
-  status: 'active' | 'resolved' | 'chronic';
-  severity: 'mild' | 'moderate' | 'severe';
-}
-
-export interface Medication {
-  name: string;
-  dosage: string;
-  frequency: string;
-  startDate: string;
-  endDate?: string;
-  prescribedBy: string;
-}
-
-export interface LabResult {
-  name: string;
-  date: string;
-  result: string;
-  normalRange?: string;
-  status: 'normal' | 'abnormal' | 'critical';
-}
-
-export interface Visit {
-  date: string;
-  type: 'emergency' | 'routine' | 'follow-up' | 'procedure';
-  provider: string;
-  notes: string;
-}
+// (Type definitions are removed in JavaScript, but the structure is implied by the data)
 
 // Mock patients data
-export const patients: Patient[] = [
+export const patients = [
   {
     id: "p-001",
     firstName: "Alex",
@@ -516,31 +453,31 @@ export const patients: Patient[] = [
 ];
 
 // Function to get a patient by ID
-export const getPatientById = (id: string): Patient | undefined => {
+export const getPatientById = (id) => {
   return patients.find(patient => patient.id === id);
 };
 
 // Function to search patients by name
-export const searchPatients = (query: string): Patient[] => {
+export const searchPatients = (query) => {
   if (!query) return patients;
-  
+
   const lowerQuery = query.toLowerCase();
-  return patients.filter(patient => 
-    patient.firstName.toLowerCase().includes(lowerQuery) || 
+  return patients.filter(patient =>
+    patient.firstName.toLowerCase().includes(lowerQuery) ||
     patient.lastName.toLowerCase().includes(lowerQuery) ||
     patient.mrn.toLowerCase().includes(lowerQuery)
   );
 };
 
 // AI response generator for doctor queries
-export const generateAIResponse = (query: string): Promise<string> => {
+export const generateAIResponse = (query) => {
   // This is a mock function that simulates an AI response
   return new Promise((resolve) => {
     // Simulate network delay
     setTimeout(() => {
       if (query.toLowerCase().includes('alex') || query.toLowerCase().includes('morgan')) {
         resolve("Alex Morgan is a 38-year-old male patient with Type 2 Diabetes and Hypertension. His last HbA1c was 7.2% (target <7.0%). His blood pressure was 120/80 at the last visit on November 28th. He's currently on Metformin 500mg twice daily and Lisinopril 10mg once daily. His next appointment is scheduled for February 28th.");
-      } 
+      }
       else if (query.toLowerCase().includes('emily') || query.toLowerCase().includes('chen')) {
         resolve("Emily Chen is a 31-year-old female patient with asthma and migraine history. Her recent lung function test shows reduced FEV1 at 75% of predicted. She reported increased frequency of asthma exacerbations at her last visit on December 5th. She's currently using Albuterol as needed and Sumatriptan for migraines. A pulmonology consultation has been recommended.");
       }
