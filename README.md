@@ -1,18 +1,7 @@
 # DocAssist 🩺💡
 
 ## 🏆 Project Overview
-**DocAssist** is an AI-powered medical assistant dashboard designed to support healthcare professionals and patients by providing intelligent insights, symptom analysis, and health recommendations. Built for the **Simba GPT: Promptathon**, this project leverages advanced AI models to enhance medical decision-making and patient care.
-
----
-
-## 🚨 Latest Migration: TypeScript → Beginner-Friendly JavaScript
-- **All code is now in JavaScript (.jsx) with clear comments and PropTypes for easy understanding.**
-- **TypeScript files have been removed or converted.**
-- **Beginner Guide and Conversion Summary**: These files were deleted, but all relevant information is now in this README.
-- **Error handling and user feedback** have been improved throughout the app, especially for authentication.
-- **Supabase** is now the only backend/auth provider. All configuration is in `src/integrations/supabase/client.js`.
-
----
+**DocAssist** is an AI-powered medical assistant designed to support healthcare professionals and patients by providing intelligent insights, symptom analysis, and health recommendations. Built for the **Simba GPT: Promptathon**, this project leverages advanced AI models to enhance medical decision-making and patient care.
 
 ## 🚀 Features
 - 🏥 **Symptom Analysis** – Get AI-driven insights on symptoms and possible conditions.
